@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'}
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.1.10"
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+apply plugin: 'idea'
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+
+intellij {
+//    IC-2016.1
+    version 'IC-2016.1' //IntelliJ IDEA dependency
+    plugins = ['gradle','groovy'] //Bundled plugin dependencies
+    pluginName 'codehelper.generator'
+    updateSinceUntilBuild false
+//    需要来填写publish这块 类似
+//    publish {
+//        username 'AmailP'
+//        pluginId '7415'
+//    }
+}
+
+
+sourceCompatibility = 1.8
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
+group 'com.susio.gradle'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+
+
