@@ -1,7 +1,13 @@
 buildscript {
+
+    ext.kotlin_version = '1.0.0'
     repositories {
         mavenCentral()
         maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service'}
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -20,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'java'
+apply plugin: 'kotlin'
 
 intellij {
 //    IC-2016.1
